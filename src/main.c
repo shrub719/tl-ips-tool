@@ -2,7 +2,24 @@
 #include <string.h>
 #include <stdint.h>
 
-#define BUFFER_SIZE 0x100
+#define BUFFER_SIZE 256
+
+uint32_t convertBytes(char *bytes, size_t len) {
+    uint32_t result = 0;
+
+    for (int i = 0; i < len; i++) {
+        result += bytes[i] << (len - i - 1) * 8;
+    }
+
+    return result;
+}
+
+void displayBytes(char *bytes, size_t len) {
+    for (int i = 0; i < len; i++) {
+        printf("%02X ", (uint8_t)bytes[i]);
+    }
+    printf("\n");
+}
 
 void view(char *filename) {
     FILE *fptr = fopen(filename, "rb");
@@ -12,19 +29,17 @@ void view(char *filename) {
     patch[5] = '\0';
     printf("%s\n", patch);
 
-    uint32_t offset;
-    uint16_t length;
     char buffer[BUFFER_SIZE];
 
     while (1) {
-        fread(&offset, 1, 3, fptr);
-        offset = offset >> 8;
+        fread(buffer, 1, 3, fptr);
+        uint32_t offset = convertBytes(buffer, 3);
         printf("offset: 0x%X\n", offset);
 
-        fread(&length, 1, 2, fptr);
+        fread(buffer, 1, 2, fptr);
+        uint32_t length = convertBytes(buffer, 2);
         printf("length: 0x%X\n", length);
 
-        /*
         if (length == 0) {
             printf("rle hunk found (not implemented) - aborting\n");
             break;
@@ -32,13 +47,9 @@ void view(char *filename) {
             printf("hunk too large - aborting\n");
             break;
         }
-        
 
         fread(buffer, 1, length, fptr);
-        printf("buffer: 0x%x\n", buffer);
-        */
-
-        break;
+        displayBytes(buffer, length);
     }
 
     fclose(fptr);
