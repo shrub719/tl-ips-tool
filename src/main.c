@@ -4,7 +4,7 @@
 
 #define BUFFER_SIZE 256
 
-uint32_t convertBytes(char *bytes, size_t len) {
+uint32_t convertBytes(unsigned char *bytes, size_t len) {
     uint32_t result = 0;
 
     for (int i = 0; i < len; i++) {
@@ -14,7 +14,7 @@ uint32_t convertBytes(char *bytes, size_t len) {
     return result;
 }
 
-void displayBytes(char *bytes, size_t len) {
+void displayBytes(unsigned char *bytes, size_t len) {
     for (int i = 0; i < len; i++) {
         printf("%02X ", (uint8_t)bytes[i]);
     }
@@ -24,15 +24,21 @@ void displayBytes(char *bytes, size_t len) {
 void view(char *filename) {
     FILE *fptr = fopen(filename, "rb");
 
-    char patch[6];
+    unsigned char patch[6];
     fread(patch, 1, 5, fptr);
     patch[5] = '\0';
     printf("%s\n", patch);
 
-    char buffer[BUFFER_SIZE];
+    unsigned char buffer[BUFFER_SIZE];
 
     while (1) {
         fread(buffer, 1, 3, fptr);
+        
+        if (strncmp("EOF", buffer, 3) == 0) {
+            printf("EOF reached\n");
+            break;
+        }
+
         uint32_t offset = convertBytes(buffer, 3);
         printf("offset: 0x%X\n", offset);
 
