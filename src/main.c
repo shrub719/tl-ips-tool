@@ -28,6 +28,7 @@ void view(char *filename) {
     fread(patch, 1, 5, fptr);
     patch[5] = '\0';
     printf("%s\n", patch);
+    printf("\n");
 
     unsigned char buffer[BUFFER_SIZE];
 
@@ -35,7 +36,7 @@ void view(char *filename) {
         fread(buffer, 1, 3, fptr);
         
         if (strncmp("EOF", buffer, 3) == 0) {
-            printf("EOF reached\n");
+            printf("EOF\n");
             break;
         }
 
@@ -56,6 +57,7 @@ void view(char *filename) {
 
         fread(buffer, 1, length, fptr);
         displayBytes(buffer, length);
+        printf("\n");
     }
 
     fclose(fptr);
