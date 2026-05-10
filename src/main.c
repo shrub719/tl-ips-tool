@@ -64,12 +64,15 @@ void view(char *filename) {
 }
 
 int main(int argc, char **argv) {
-    char *command = argv[1];
+    /* char *command = argv[1];
 
     if (strlen(command) >= 4 && strncmp("view", command, 4) == 0) {
         char *filename = argv[2];
         view(filename);
     }
+    */
+    char *filename = argv[1];
+    view(filename);
 
     return 0;
 }

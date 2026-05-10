@@ -5,7 +5,7 @@ build:
 
 [default]
 test file="./ips/code.ips": build
-    ./target/{{name}} view {{file}}
+    ./target/{{name}} {{file}}
 
 dump file="./ips/code.ips":
     hexdump -C {{file}}
