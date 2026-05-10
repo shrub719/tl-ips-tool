@@ -1,0 +1,236 @@
+PATCH
+
+offset: 0x232A34
+length: 0x18
+ldr r1, [r9, #0x15c]
+ldrb r1, [r1, #0x639]
+add r1, r5, r1, lsl #1
+add r1, r1, #0x700
+ldrsh r2, [r1, #0xe]
+cmn r2, #1
+
+offset: 0x23D260
+length: 0x4
+nop
+
+offset: 0x23D3DC
+length: 0x4
+nop
+
+offset: 0x2686FC
+length: 0x4
+nop
+
+offset: 0x26875C
+length: 0x4
+nop
+
+offset: 0x268778
+length: 0x7C
+beq 0x30
+ldr r0, [r10, #0]
+mov r3, #7
+mov r2, r7
+mov r1, r4
+bl 0x203684
+mov r3, r4
+mov r2, r7
+mov r1, #0
+mov r0, r11
+bl 0xfffc9854
+b 0x90
+mov r12, #0
+ldr r9, [r6, #4]
+ldr r5, [r5, #4]
+add r9, r9, #0xb8
+mov r0, r9
+add r1, r5, #0xb8
+bl 0x2c84c
+cmp r0, #0
+bne 0x7c
+mov r0, r9
+add r1, r5, #0xc2
+bl 0x2c84c
+cmp r0, #0
+bne 0x7c
+cmp r12, #0
+moveq r12, #1
+addeq r9, r9, #0xa
+beq 0x40
+b 0x90
+
+offset: 0x4561EE
+length: 0x2A
+19 E5 
+ldr r1, [r9, #4]
+cmp r0, r1
+movlt r1, #0
+movge r1, #1
+nop 
+mov r2, r4
+nop 
+ldr r0, [r7]
+nop 
+nop 
+
+offset: 0x4567FC
+length: 0x4
+nop
+
+offset: 0x456A23
+length: 0x1
+EA 
+
+offset: 0x456AC8
+length: 0x4
+nop
+
+offset: 0x458B7C
+length: 0x1
+0C 
+
+offset: 0x458B85
+length: 0xC
+50 91 E5
+ldr r1, [r4, #8]
+ldr r9, [r1, #0xec]
+10
+
+offset: 0x458BA4
+length: 0x34
+cmp r5, r9
+movne r6, #3
+bne 0x20
+cmp r5, #0
+moveq r6, #2
+beq 0x20
+mov r6, #1
+b 0x20
+nop 
+nop 
+nop 
+mov r5, #1
+b 0x54
+
+offset: 0x458BF1
+length: 0x7
+00 00 0A 
+b 0xffffffb0
+
+offset: 0x458C28
+length: 0x1
+DD 
+
+offset: 0x458C40
+length: 0x9
+beq 0xffffff64
+mov r6, #0
+DD
+
+offset: 0x465418
+length: 0x4
+nop
+
+offset: 0x46BF03
+length: 0x1
+E1 
+
+offset: 0x47CDE4
+length: 0x4
+nop
+
+offset: 0x6B541C
+length: 0x4
+nop
+
+offset: 0x6B558B
+length: 0x9
+E5
+mov r4, #0
+nop 
+
+offset: 0x6B55F8
+length: 0x4
+nop
+
+offset: 0x6B58A8
+length: 0x4
+nop
+
+offset: 0x6B65FC
+length: 0x4
+nop
+
+offset: 0x6B762C
+length: 0x4
+nop
+
+offset: 0x6C6307
+length: 0x1
+EA 
+
+offset: 0x6E1E74
+length: 0x4
+nop
+
+offset: 0x6E1EDC
+length: 0x4
+nop
+
+offset: 0x6E2520
+length: 0x4
+nop
+
+offset: 0x6E2561
+length: 0xC3
+40 94 E5
+ldr r5, [r5, #4]
+mov r6, #0
+add r4, r4, #0xa0
+add r0, r4, r6
+add r1, r5, #0xa0
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+add r0, r4, r6
+add r1, r5, #0xb8
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+nop 
+add r0, r4, r6
+add r1, r5, #0xc2
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+add r0, r4, r6
+add r1, r5, #0xcc
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+add r0, r4, r6
+add r1, r5, #0xd6
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+nop 
+add r0, r4, r6
+add r1, r5, #0xe0
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+add r0, r4, r6
+add r1, r5, #0xea
+bl 0xffbb2a60
+cmp r0, #0
+bne 0x2fc
+cmp r6, #0
+addeq r6, r6, #0x18
+beq 0xc
+add r6, r6, #0xa
+cmp r6, #0x4a
+bgt 0x304
+b 0xc
+nop 
+
+EOF
