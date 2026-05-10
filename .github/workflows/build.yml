@@ -1,4 +1,4 @@
-name: Build tool
+name: Build C program
 
 on:
   push:
@@ -59,11 +59,11 @@ jobs:
 
     - name: Compile
       run: |
-        gcc -Wall -o tl-attr-tool src/*.c
+        gcc -Wall -o tl-ips-tool src/*.c
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: tl-attr-tool-${{ matrix.os }}
+        name: tl-ips-tool-${{ matrix.os }}
         path: |
-          tl-attr-tool*tl-ips-tool*
+          tl-ips-tool*
